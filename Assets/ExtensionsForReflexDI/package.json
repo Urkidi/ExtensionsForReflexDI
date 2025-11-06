@@ -1,0 +1,16 @@
+{
+    "name": "com.urkidi.extensionsforreflexdi",
+    "version": "1.0.0",
+    "displayName": "Extensions For Reflex DI",
+    "description": "Adds utility and small features for reflex DI",
+    "unity": "6000.2",
+    "keywords": [
+        "reflex",
+        "extensions",
+        "servicecollection"
+    ],
+    "author": {
+        "name": "Unai Urkidi",
+        "url": "https://github.com/urkidi"
+    }
+}
