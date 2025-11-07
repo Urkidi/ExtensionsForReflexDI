@@ -22,8 +22,5 @@ Adds translation capabilities from IServiceCollection dependent packages to Refl
 ## Usage
 Access the bridge implementation by the extension method ```AddFromServiceCollection``` on ```Container``` 
 
-#### For especific use cases of the rest please check the Samples project
-___WIP___
+*For especific use cases of the rest of the please check the Samples project*
 Here: ```https://github.com/Urkidi/ExtensionsForReflexDI.git?path=/Assets/ExtensionsForReflexDI.Sample/```
-
-

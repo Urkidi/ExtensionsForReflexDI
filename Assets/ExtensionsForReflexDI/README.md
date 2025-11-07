@@ -2,8 +2,8 @@
 
 Adds some functionalities to ease use and organize usage of reflex DI
 Adds translation capabilities from IServiceCollection dependent packages to Reflex
-    -Does not support keyed bindings
-    -Does not support factory bindings
+-Does not support keyed bindings
+-Does not support factory bindings
 
 ---
 
@@ -20,10 +20,7 @@ Adds translation capabilities from IServiceCollection dependent packages to Refl
 
 
 ## Usage
-Access the bridge implementation by the extension method ```AddFromServiceCollection``` on ```Container``` 
+Access the bridge implementation by the extension method ```AddFromServiceCollection``` on ```Container```
 
-#### For especific use cases of the rest please check the Samples project
-___WIP___
+*For especific use cases of the rest of the please check the Samples project*
 Here: ```https://github.com/Urkidi/ExtensionsForReflexDI.git?path=/Assets/ExtensionsForReflexDI.Sample/```
-
-
