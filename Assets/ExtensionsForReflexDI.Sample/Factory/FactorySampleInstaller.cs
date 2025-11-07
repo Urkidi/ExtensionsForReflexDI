@@ -1,8 +1,10 @@
 using ExtensionsForReflexDI.Installers;
+using JetBrains.Annotations;
 
 namespace ExtensionsForReflexDI.Sample.Factory
 {
-    public class FactorySampleInstaller : BaseInstaller<FactorySampleInstaller>
+    [UsedImplicitly]
+    public sealed class FactorySampleInstaller : BaseInstaller<FactorySampleInstaller> 
     {
         protected override void InstallBindings()
         {

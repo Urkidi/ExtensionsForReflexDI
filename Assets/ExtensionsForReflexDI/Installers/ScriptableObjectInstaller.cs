@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ExtensionsForReflexDI.Installers
 {
-    public abstract class ConfigInstaller : ScriptableObject
+    public abstract class ScriptableObjectInstaller : ScriptableObject
     {
         private ContainerBuilder _containerBuilder;
         

@@ -6,7 +6,15 @@ using Reflex.Core;
 
 namespace ExtensionsForReflexDI.Factory
 {
-    public abstract class CustomFactory<TConcrete>
+    /// <summary>
+    /// Allows for easy binding of factories without the need to separate the resolved and passed parameters.
+    /// The format order is: TConcrete, TContract, TParams.
+    /// All params defined in the factory must be passed when creating an object.
+    /// If you want a param to be resolved, add it to the constructor of the Concrete.
+    /// Parameters to be resolved must come after the passed ones in the constructor.
+    /// </summary>
+    /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
+    public abstract class CustomFactory<TConcrete> where TConcrete : class
     {
         private readonly Container _container;
         private readonly ParameterInfo[] _constructorParameters;
@@ -75,9 +83,11 @@ namespace ExtensionsForReflexDI.Factory
             return passedParameters;
         }
     }
-
+    
+    /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
+    /// <typeparam name="TContract">The item type the factory returns</typeparam>
     public abstract class CustomFactory<TConcrete, TContract> : CustomFactory<TConcrete>, IFactory<TContract>
-        where TConcrete : TContract
+        where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
@@ -89,8 +99,11 @@ namespace ExtensionsForReflexDI.Factory
         }
     }
 
+    /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
+    /// <typeparam name="TContract">The item type the factory returns</typeparam>
+    /// <typeparam name="TParam">Passed parameter when calling factory.Create()</typeparam>
     public abstract class CustomFactory<TConcrete, TContract, TParam> : CustomFactory<TConcrete>,
-        IFactory<TContract, TParam> where TConcrete : TContract
+        IFactory<TContract, TParam> where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
@@ -101,9 +114,13 @@ namespace ExtensionsForReflexDI.Factory
             return base.Create(param);
         }
     }
-
+    
+    /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
+    /// <typeparam name="TContract">The item type the factory returns</typeparam>
+    /// <typeparam name="TParam1">Passed parameter when calling create</typeparam>
+    /// <typeparam name="TParam2">Passed parameter when calling create</typeparam>
     public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2> : CustomFactory<TConcrete>,
-        IFactory<TContract, TParam1, TParam2> where TConcrete : TContract
+        IFactory<TContract, TParam1, TParam2> where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
@@ -115,8 +132,14 @@ namespace ExtensionsForReflexDI.Factory
         }
     }
 
+    
+    /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
+    /// <typeparam name="TContract">The item type the factory returns</typeparam>
+    /// <typeparam name="TParam1">Passed parameter when calling create</typeparam>
+    /// <typeparam name="TParam2">Passed parameter when calling create</typeparam>
+    /// <typeparam name="TParam3">Passed parameter when calling create</typeparam>
     public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3> : CustomFactory<TConcrete>,
-        IFactory<TContract, TParam1, TParam2, TParam3> where TConcrete : TContract
+        IFactory<TContract, TParam1, TParam2, TParam3> where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
@@ -130,7 +153,7 @@ namespace ExtensionsForReflexDI.Factory
 
     public abstract class
         CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4> : CustomFactory<TConcrete>,
-        IFactory<TContract, TParam1, TParam2, TParam3, TParam4> where TConcrete : TContract
+        IFactory<TContract, TParam1, TParam2, TParam3, TParam4> where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
@@ -144,7 +167,7 @@ namespace ExtensionsForReflexDI.Factory
 
     public abstract class
         CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4, TParam5> : CustomFactory<TConcrete>,
-        IFactory<TContract, TParam1, TParam2, TParam3, TParam4, TParam5> where TConcrete : TContract
+        IFactory<TContract, TParam1, TParam2, TParam3, TParam4, TParam5> where TConcrete : class, TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
