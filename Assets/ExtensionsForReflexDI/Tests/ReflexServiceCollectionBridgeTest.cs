@@ -52,7 +52,7 @@ namespace ExtensionsForReflexDI.Tests
         {
             ContainerBuilder builder = new();
             foreach (var resolvedType in resolvedTypes)
-                _serviceCollection.AddTransient(resolvedType, typeof(MockedClass));
+                _serviceCollection.AddSingleton(resolvedType, typeof(MockedClass));
             
             builder.AddFromServiceCollection(_serviceCollection);
             var container = builder.Build();
