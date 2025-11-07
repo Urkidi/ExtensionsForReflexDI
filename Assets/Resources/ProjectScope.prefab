@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970998602200030791}
   - component: {fileID: 5915295655161924902}
+  - component: {fileID: 4903181921363640410}
   m_Layer: 0
   m_Name: ProjectScope
   m_TagString: Untagged
@@ -44,3 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238ee66aa2bafad47bf60938e98aebca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Reflex::Reflex.Core.ProjectScope
+--- !u!114 &4903181921363640410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633945538332966398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2302e5c54fe44ed8441658789d03816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ExtensionsForReflexDI.Sample::ExtensionsForReflexDI.Sample.ProjectInstaller
+  _configInstaller: {fileID: 11400000, guid: ec21640ef76e278498b15f0eec9c6ed0, type: 2}

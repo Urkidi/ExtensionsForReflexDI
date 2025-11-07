@@ -1,13 +1,23 @@
+using Reflex.Core;
 using UnityEngine;
 
 namespace ExtensionsForReflexDI.Installers
 {
-    public abstract class ConfigInstaller : ScriptableObjectInstaller
+    public abstract class ConfigInstaller : ScriptableObject
     {
-
-        protected void BindConfig<TInterface>(ScriptableObject config)
+        private ContainerBuilder _containerBuilder;
+        
+        public void Install(ContainerBuilder builder)
         {
-            ContainerBuilder.AddSingleton(config, typeof(TInterface));
+            _containerBuilder = builder;
+            InstallBindings();
+        }
+
+        protected abstract void InstallBindings();
+        
+        protected void BindConfig<TContract>(ScriptableObject config)
+        {
+            _containerBuilder.AddSingleton(config, typeof(TContract));
         }
     }
 }

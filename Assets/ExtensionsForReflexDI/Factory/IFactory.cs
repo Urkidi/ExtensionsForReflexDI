@@ -4,29 +4,29 @@ namespace ExtensionsForReflexDI.Factory
     {
     }
     
-    public interface IFactory<out TInterface> : IFactory
+    public interface IFactory<out TContract> : IFactory
     {
-        TInterface Create();
+        TContract Create();
     }
     
-    public interface IFactory<out TInterface, in TParam> : IFactory
+    public interface IFactory<out TContract, in TParam> : IFactory
     {
-        TInterface Create(TParam param);
+        TContract Create(TParam param);
     } 
-    public interface IFactory<out TInterface, in TParam1, in TParam2> : IFactory
+    public interface IFactory<out TContract, in TParam1, in TParam2> : IFactory
     {
-        TInterface Create(TParam1 param1, TParam2 param2);
+        TContract Create(TParam1 param1, TParam2 param2);
     }
-    public interface IFactory<out TInterface, in TParam1, in TParam2, in TParam3> : IFactory
+    public interface IFactory<out TContract, in TParam1, in TParam2, in TParam3> : IFactory
     {
-        TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3);
+        TContract Create(TParam1 param1, TParam2 param2, TParam3 param3);
     }
-    public interface IFactory<out TInterface, in TParam1, in TParam2, in TParam3, in TParam4> : IFactory
+    public interface IFactory<out TContract, in TParam1, in TParam2, in TParam3, in TParam4> : IFactory
     {
-        TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4);
+        TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4);
     }
-    public interface IFactory<out TInterface, in TParam1, in TParam2, in TParam3, in TParam4, in TParam5> : IFactory
+    public interface IFactory<out TContract, in TParam1, in TParam2, in TParam3, in TParam4, in TParam5> : IFactory
     {
-        TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5);
+        TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5);
     }
 }

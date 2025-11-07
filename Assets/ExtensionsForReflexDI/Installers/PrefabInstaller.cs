@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ExtensionsForReflexDI.Installers
 {
-    public abstract class ScriptableObjectInstaller : ScriptableObject
+    public abstract class PrefabInstaller : ScriptableObject
     {
         protected ContainerBuilder ContainerBuilder;
         

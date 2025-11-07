@@ -76,81 +76,81 @@ namespace ExtensionsForReflexDI.Factory
         }
     }
 
-    public abstract class CustomFactory<TConcrete, TInterface> : CustomFactory<TConcrete>, IFactory<TInterface>
-        where TConcrete : TInterface
+    public abstract class CustomFactory<TConcrete, TContract> : CustomFactory<TConcrete>, IFactory<TContract>
+        where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create()
+        public TContract Create()
         {
             return base.Create();
         }
     }
 
-    public abstract class CustomFactory<TConcrete, TInterface, TParam> : CustomFactory<TConcrete>,
-        IFactory<TInterface, TParam> where TConcrete : TInterface
+    public abstract class CustomFactory<TConcrete, TContract, TParam> : CustomFactory<TConcrete>,
+        IFactory<TContract, TParam> where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create(TParam param)
+        public TContract Create(TParam param)
         {
             return base.Create(param);
         }
     }
 
-    public abstract class CustomFactory<TConcrete, TInterface, TParam1, TParam2> : CustomFactory<TConcrete>,
-        IFactory<TInterface, TParam1, TParam2> where TConcrete : TInterface
+    public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2> : CustomFactory<TConcrete>,
+        IFactory<TContract, TParam1, TParam2> where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create(TParam1 param1, TParam2 param2)
+        public TContract Create(TParam1 param1, TParam2 param2)
         {
             return base.Create(param1, param2);
         }
     }
 
-    public abstract class CustomFactory<TConcrete, TInterface, TParam1, TParam2, TParam3> : CustomFactory<TConcrete>,
-        IFactory<TInterface, TParam1, TParam2, TParam3> where TConcrete : TInterface
+    public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3> : CustomFactory<TConcrete>,
+        IFactory<TContract, TParam1, TParam2, TParam3> where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3)
+        public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3)
         {
             return base.Create(param1, param2, param3);
         }
     }
 
     public abstract class
-        CustomFactory<TConcrete, TInterface, TParam1, TParam2, TParam3, TParam4> : CustomFactory<TConcrete>,
-        IFactory<TInterface, TParam1, TParam2, TParam3, TParam4> where TConcrete : TInterface
+        CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4> : CustomFactory<TConcrete>,
+        IFactory<TContract, TParam1, TParam2, TParam3, TParam4> where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
+        public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
         {
             return base.Create(param1, param2, param3, param4);
         }
     }
 
     public abstract class
-        CustomFactory<TConcrete, TInterface, TParam1, TParam2, TParam3, TParam4, TParam5> : CustomFactory<TConcrete>,
-        IFactory<TInterface, TParam1, TParam2, TParam3, TParam4, TParam5> where TConcrete : TInterface
+        CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4, TParam5> : CustomFactory<TConcrete>,
+        IFactory<TContract, TParam1, TParam2, TParam3, TParam4, TParam5> where TConcrete : TContract
     {
         protected CustomFactory(Container container) : base(container)
         {
         }
 
-        public TInterface Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
+        public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
         {
             return base.Create(param1, param2, param3, param4, param5);
         }
