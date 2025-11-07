@@ -1,6 +1,6 @@
 namespace ExtensionsForReflexDI.Sample.Factory
 {
-    public class FactoryClassUsage
+    public sealed class FactoryClassUsage
     {
         public FactoryClassUsage(IFactoryClassFactory factoryClassFactory)
         {

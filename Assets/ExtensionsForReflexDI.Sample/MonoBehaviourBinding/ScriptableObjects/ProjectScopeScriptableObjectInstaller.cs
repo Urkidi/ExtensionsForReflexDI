@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ExtensionsForReflexDI.Sample.MonoBehaviourBinding.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = nameof(ProjectScopeScriptableObjectInstaller), menuName = "ScriptableObjects/Configs/"+ nameof(ProjectScopeScriptableObjectInstaller), order = 1)] 
+    [CreateAssetMenu(fileName = nameof(ProjectScopeScriptableObjectInstaller), menuName = "ScriptableObjects/"+ nameof(ProjectScopeScriptableObjectInstaller), order = 1)] 
     public sealed class ProjectScopeScriptableObjectInstaller : ScriptableObjectInstaller 
     {
         [SerializeField] private SampleConfig _sampleConfig;

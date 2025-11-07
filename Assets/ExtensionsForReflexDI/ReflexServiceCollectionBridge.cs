@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.Extensions.DependencyInjection;
 using Reflex.Core;
-using UnityEngine;
 
 namespace ExtensionsForReflexDI
 {

@@ -1,4 +1,5 @@
 using ExtensionsForReflexDI.Factory;
+using JetBrains.Annotations;
 using Reflex.Core;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace ExtensionsForReflexDI.Sample.Factory
     public interface IFactoryClassFactory : IFactory<IFactoryClass, int>
     { }
 
-    public class FactoryClass : IFactoryClass
+    [UsedImplicitly]
+    public sealed class FactoryClass : IFactoryClass
     {
         public class Factory : CustomFactory<FactoryClass, IFactoryClass, int>, IFactoryClassFactory
         {
@@ -17,8 +19,8 @@ namespace ExtensionsForReflexDI.Sample.Factory
 
         public FactoryClass(int param, IInjectableInterface injectable)
         {
-            Debug.Log($"int param value is: {param}");
-            Debug.Log($"injectable param value is: {injectable}");
+            Debug.Log($"{nameof(FactoryClass)} Instance: int param value is: {param}");
+            Debug.Log($"{nameof(FactoryClass)} Instance: Injectable param is: {injectable}");
         }
     }
 }

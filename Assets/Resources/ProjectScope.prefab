@@ -57,4 +57,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2302e5c54fe44ed8441658789d03816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ExtensionsForReflexDI.Sample::ExtensionsForReflexDI.Sample.ProjectInstaller
-  _configInstaller: {fileID: 11400000, guid: ec21640ef76e278498b15f0eec9c6ed0, type: 2}
+  _scriptableObjectInstaller: {fileID: 11400000, guid: 090d246345a078d498a86e1f6983bbc6, type: 2}

@@ -4,7 +4,6 @@ using ExtensionsForReflexDI.Tests.Mock;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Reflex.Core;
-using Reflex.Exceptions;
 
 namespace ExtensionsForReflexDI.Tests
 {

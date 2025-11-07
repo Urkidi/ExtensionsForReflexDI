@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c12f92e3fd42a38666b6343b98227e, type: 3}
+  m_Name: ProjectScopeScriptableObjectInstaller
+  m_EditorClassIdentifier: ExtensionsForReflexDI.Sample::ExtensionsForReflexDI.Sample.MonoBehaviourBinding.ScriptableObjects.ProjectScopeScriptableObjectInstaller
+  _sampleConfig: {fileID: 11400000, guid: 30121541985f31b4081bb0fdc38270c9, type: 2}
+  _sampleConfig2: {fileID: 11400000, guid: 5804a3bdee7729d45b20a88bb464d267, type: 2}
