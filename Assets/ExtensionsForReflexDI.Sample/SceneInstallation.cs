@@ -16,7 +16,7 @@ namespace ExtensionsForReflexDI.Sample
             _installer.Install(containerBuilder);
             
             //Factories / Base Installer usage
-            FactorySampleInstaller.Install(containerBuilder);
+            FactorySampleInstaller.InstallBindings(containerBuilder);
             containerBuilder.AddSingleton<FactoryClassUsage>().NonLazy<FactoryClassUsage>();
             containerBuilder.AddSingleton<InjectableClass, IInjectableInterface>();
             

@@ -1,16 +1,15 @@
-using ExtensionsForReflexDI.Installers;
 using JetBrains.Annotations;
+using Reflex.Core;
 
 namespace ExtensionsForReflexDI.Sample.Factory
 {
     [UsedImplicitly]
-    public sealed class FactorySampleInstaller : BaseInstaller<FactorySampleInstaller> 
+    public static class FactorySampleInstaller
     {
-        protected override void InstallBindings()
+        public static void InstallBindings(ContainerBuilder builder)
         {
-            ContainerBuilder.AddSingleton(typeof(FactoryClass.Factory), typeof(IFactoryClassFactory));
-            ContainerBuilder.AddSingleton(typeof(FactoryClassUsage));
-            
+            builder.AddSingleton(typeof(FactoryClass.Factory), typeof(IFactoryClassFactory));
+            builder.AddSingleton(typeof(FactoryClassUsage));
         }
     }
 }
