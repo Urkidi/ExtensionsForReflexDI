@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Reflex.Attributes;
 using Reflex.Core;
 
 namespace ExtensionsForReflexDI.Factory
@@ -16,13 +17,12 @@ namespace ExtensionsForReflexDI.Factory
     /// <typeparam name="TConcrete">The item type the factory creates</typeparam>
     public abstract class CustomFactory<TConcrete> where TConcrete : class
     {
-        private readonly Container _container;
+        [Inject] private readonly Container _container;
         private readonly ParameterInfo[] _constructorParameters;
         private readonly Func<object[], TConcrete> _activator;
 
-        protected CustomFactory(Container container)
+        protected CustomFactory()
         {
-            _container = container;
             var constructor = typeof(TConcrete).GetConstructors().Single();
             _constructorParameters = constructor.GetParameters();
             _activator = CreateActivator(constructor);
@@ -89,10 +89,6 @@ namespace ExtensionsForReflexDI.Factory
     public abstract class CustomFactory<TConcrete, TContract> : CustomFactory<TConcrete>, IFactory<TContract>
         where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
-
         public TContract Create()
         {
             return base.Create();
@@ -105,10 +101,6 @@ namespace ExtensionsForReflexDI.Factory
     public abstract class CustomFactory<TConcrete, TContract, TParam> : CustomFactory<TConcrete>,
         IFactory<TContract, TParam> where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
-
         public TContract Create(TParam param)
         {
             return base.Create(param);
@@ -122,9 +114,6 @@ namespace ExtensionsForReflexDI.Factory
     public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2> : CustomFactory<TConcrete>,
         IFactory<TContract, TParam1, TParam2> where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
 
         public TContract Create(TParam1 param1, TParam2 param2)
         {
@@ -141,9 +130,6 @@ namespace ExtensionsForReflexDI.Factory
     public abstract class CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3> : CustomFactory<TConcrete>,
         IFactory<TContract, TParam1, TParam2, TParam3> where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
 
         public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3)
         {
@@ -155,9 +141,6 @@ namespace ExtensionsForReflexDI.Factory
         CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4> : CustomFactory<TConcrete>,
         IFactory<TContract, TParam1, TParam2, TParam3, TParam4> where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
 
         public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
         {
@@ -169,9 +152,6 @@ namespace ExtensionsForReflexDI.Factory
         CustomFactory<TConcrete, TContract, TParam1, TParam2, TParam3, TParam4, TParam5> : CustomFactory<TConcrete>,
         IFactory<TContract, TParam1, TParam2, TParam3, TParam4, TParam5> where TConcrete : class, TContract
     {
-        protected CustomFactory(Container container) : base(container)
-        {
-        }
 
         public TContract Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
         {

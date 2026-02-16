@@ -10,9 +10,6 @@ namespace ExtensionsForReflexDI.Tests.Mock
     {
         public class MockItemFactory : CustomFactory<MockItem, MockItem, int>, IMockItemFactory
         {
-            public MockItemFactory(Container container) : base(container)
-            {
-            }
         }
 
         public MockItem(int item)

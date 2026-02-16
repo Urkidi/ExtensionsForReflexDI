@@ -13,8 +13,6 @@ namespace ExtensionsForReflexDI.Sample.Factory
     {
         public class Factory : CustomFactory<FactoryClass, IFactoryClass, int>, IFactoryClassFactory
         {
-            public Factory(Container container) : base(container)
-            { }
         }
 
         public FactoryClass(int param, IInjectableInterface injectable)
