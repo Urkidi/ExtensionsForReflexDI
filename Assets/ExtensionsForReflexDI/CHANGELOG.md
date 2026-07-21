@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] - 2026-02-16
+### Modified
+- Updated Asmdef test file to only work on editor
+- 
 ## [1.1.0] - 2026-02-16
 ### Modified
 - Removed Unused Constructor from base CustomFactory. Switched to inject tag
