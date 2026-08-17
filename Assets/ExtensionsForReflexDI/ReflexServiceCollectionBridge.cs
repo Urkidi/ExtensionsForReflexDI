@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.Extensions.DependencyInjection;
 using Reflex.Core;
+using Reflex.Enums;
 
 namespace ExtensionsForReflexDI
 {
@@ -54,7 +55,7 @@ namespace ExtensionsForReflexDI
 
             SetUpTypeBindings(builder, groupedTypeDescriptors);
             SetUpValueBindings(builder, groupedInstanceDescriptors);
-            //SetUpFactoryBindings(builder, groupedFactoryDescriptors);
+            SetUpFactoryBindings(builder, groupedFactoryDescriptors);
         }
 
         private static void SetUpTypeBindings(ContainerBuilder containerBuilder,
@@ -71,13 +72,13 @@ namespace ExtensionsForReflexDI
                 switch (lifetime)
                 {
                     case ServiceLifetime.Singleton:
-                        containerBuilder.AddSingleton(sd, concretes);
+                        containerBuilder.RegisterType(sd, concretes, Lifetime.Singleton, Resolution.Lazy);
                         break;
                     case ServiceLifetime.Scoped:
-                        containerBuilder.AddScoped(sd, concretes);
+                        containerBuilder.RegisterType(sd, concretes, Lifetime.Scoped, Resolution.Lazy);
                         break;
                     case ServiceLifetime.Transient:
-                        containerBuilder.AddTransient(sd, concretes);
+                        containerBuilder.RegisterType(sd, concretes, Lifetime.Transient, Resolution.Lazy);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(
@@ -100,31 +101,33 @@ namespace ExtensionsForReflexDI
                 switch (lifetime)
                 {
                     case ServiceLifetime.Singleton:
-                        containerBuilder.AddSingleton(sd, concretes);
+                        containerBuilder.RegisterValue(sd, concretes);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"Reflex only supports singleton value binding");
                 }
             }
         }
-
+        
         private static void SetUpFactoryBindings(ContainerBuilder containerBuilder, List<ServiceDescriptor> descriptors)
         {
-            //TODO Not able to properly resolve the factories
-            
+            var provider = new ReflexServiceProvider(containerBuilder);
             
             foreach (var descriptor in descriptors)
             {
+                if(descriptor.ImplementationFactory == null)
+                    continue;
+                
                 switch (descriptor.Lifetime)
                 {
                     case ServiceLifetime.Singleton:
-                        containerBuilder.AddSingleton(_ => descriptor.ImplementationFactory(null), descriptor.ServiceType);
+                        containerBuilder.RegisterFactory(cont => descriptor.ImplementationFactory(provider), new[] {descriptor.ServiceType}, Lifetime.Singleton, Resolution.Lazy);
                         break;
                     case ServiceLifetime.Scoped:
-                        containerBuilder.AddScoped(_ => descriptor.ImplementationFactory(null), descriptor.ServiceType);
+                        containerBuilder.RegisterFactory(_ => descriptor.ImplementationFactory(provider), new[] {descriptor.ServiceType}, Lifetime.Scoped, Resolution.Lazy);
                         break;
                     case ServiceLifetime.Transient:
-                        containerBuilder.AddTransient(_ => descriptor.ImplementationFactory(null), descriptor.ServiceType);
+                        containerBuilder.RegisterFactory(_ => descriptor.ImplementationFactory(provider), new[] {descriptor.ServiceType}, Lifetime.Transient, Resolution.Lazy);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(

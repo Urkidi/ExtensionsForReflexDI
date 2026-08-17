@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Reflex.Core;
+using Reflex.Enums;
 
 namespace ExtensionsForReflexDI.Sample.Factory
 {
@@ -8,8 +9,8 @@ namespace ExtensionsForReflexDI.Sample.Factory
     {
         public static void InstallBindings(ContainerBuilder builder)
         {
-            builder.AddSingleton(typeof(FactoryClass.Factory), typeof(IFactoryClassFactory));
-            builder.AddSingleton(typeof(FactoryClassUsage));
+            builder.RegisterType<FactoryClass.Factory, IFactoryClassFactory>();
+            builder.RegisterType<FactoryClassUsage>(Lifetime.Singleton, Resolution.Eager);
         }
     }
 }

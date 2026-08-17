@@ -14,7 +14,7 @@ namespace ExtensionsForReflexDI.Sample.MonoBehaviourBinding.Prefabs
         private readonly Queue<SpawnableItem> _queue = new();
 
         [Inject]
-        public void Inject(IViewPool<SpawnableItem> viewPool, IViewFactory<SpawnableItem> viewFactory)
+        private  void Inject(IViewPool<SpawnableItem> viewPool, IViewFactory<SpawnableItem> viewFactory)
         {
             _viewPool = viewPool;
             _viewFactory = viewFactory;

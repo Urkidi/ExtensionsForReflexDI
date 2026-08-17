@@ -17,7 +17,7 @@ namespace ExtensionsForReflexDI.Installers
         
         protected void BindConfig<TContract>(ScriptableObject config)
         {
-            _containerBuilder.AddSingleton(config, typeof(TContract));
+            _containerBuilder.RegisterValue(config, new[]{typeof(TContract)});
         }
     }
 }

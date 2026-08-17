@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.0] - 2026-07-29
+### Modified
+- Updated package to work with Reflex 14.3.1
+
 ## [1.2.0] - 2026-02-16
 ### Modified
 - Updated Asmdef test file to only work on editor

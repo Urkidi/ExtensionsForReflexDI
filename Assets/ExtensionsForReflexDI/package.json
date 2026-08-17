@@ -1,6 +1,6 @@
 {
     "name": "com.urkidi.extensionsforreflexdi",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "displayName": "Extensions For Reflex DI",
     "description": "Adds utility and small features for reflex DI",
     "unity": "6000.2",

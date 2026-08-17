@@ -4,6 +4,7 @@ using ExtensionsForReflexDI.Tests.Mock;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Reflex.Core;
+using Reflex.Enums;
 
 namespace ExtensionsForReflexDI.Tests
 {
@@ -149,51 +150,50 @@ namespace ExtensionsForReflexDI.Tests
             Assert.That(((MockedClass)container.Resolve(type)).Value, Is.EqualTo(value));
         }
 
-        // TODO Not supported
-        // [Test]
-        // public void MultipleFactory_SingletonBinding_ResolvesForContracts()
-        // {
-        //     
-        // }
-        //
-        // [Test]
-        // public void MultipleFactory_TransientBinding_ResolvesForContracts()
-        // {
-        //     ContainerBuilder builder = new();
-        //     builder.AddTransient(_=>new MockedClass(), typeof(IMockInterface1));
-        //     builder.AddTransient(_=>new MockedClass(), typeof(IMockInterface2));
-        //     builder.Build();
-        // }
-        //
-        // [Test]
-        // [TestCase(0,typeof(IMockInterface1))]
-        // [TestCase(90,typeof(IMockInterface2))]
-        // [TestCase(62,typeof(IMockInterface1), typeof(IMockInterface2))]
-        // [TestCase(11,typeof(IMockInterface2), typeof(IMockInterface3))]
-        // [TestCase(02893,typeof(IMockInterface1), typeof(IMockInterface2), typeof(IMockInterface3))]
-        // [TestCase(1234553,typeof(IMockInterface3), typeof(IMockInterface2), typeof(IMockInterface1))]
-        // public void MultipleFactory_ScopedBinding_ResolvesForContracts(int value, params Type[] resolvedTypes)
-        // {
-        //     ContainerBuilder  builder = new();
-        //     var container = builder.Build();
-        //     using var scope = container.Scope(scopedBuilder =>
-        //     {
-        //         foreach (var type in resolvedTypes)
-        //             _serviceCollection.AddScoped(type, _ => new MockedClass(){Value = value});
-        //     
-        //         scopedBuilder.AddFromServiceCollection(_serviceCollection);
-        //     
-        //         var scopedContainer = scopedBuilder.Build();
-        //         foreach (var type in resolvedTypes)
-        //         {
-        //             var item1 = scopedContainer.Resolve(type);
-        //             var item2 = scopedContainer.Resolve(type);
-        //             Assert.That(((MockedClass)container.Resolve(type)).Value, Is.EqualTo(value));
-        //             Assert.That(item1.Equals(item2), Is.Not.True);
-        //         
-        //         }
-        //     });
-        //     //Assert.Throws<ContractDefinitionException>(()=>container.Resolve<MockedClass>());
-        // }
+        [Test]
+        public void MultipleFactory_SingletonBinding_ResolvesForContracts()
+        {
+            
+        }
+        
+        [Test]
+        public void MultipleFactory_TransientBinding_ResolvesForContracts()
+        {
+            ContainerBuilder builder = new();
+            builder.RegisterFactory(_=>new MockedClass(), new[]{typeof(IMockInterface1)}, Lifetime.Singleton, Resolution.Lazy);
+            builder.RegisterFactory(_=>new MockedClass(), new[]{typeof(IMockInterface2)}, Lifetime.Singleton, Resolution.Lazy);
+            builder.Build();
+        }
+        
+        [Test]
+        [TestCase(0,typeof(IMockInterface1))]
+        [TestCase(90,typeof(IMockInterface2))]
+        [TestCase(62,typeof(IMockInterface1), typeof(IMockInterface2))]
+        [TestCase(11,typeof(IMockInterface2), typeof(IMockInterface3))]
+        [TestCase(02893,typeof(IMockInterface1), typeof(IMockInterface2), typeof(IMockInterface3))]
+        [TestCase(1234553,typeof(IMockInterface3), typeof(IMockInterface2), typeof(IMockInterface1))]
+        public void MultipleFactory_ScopedBinding_ResolvesForContracts(int value, params Type[] resolvedTypes)
+        {
+            ContainerBuilder  builder = new();
+            var container = builder.Build();
+            using var scope = container.Scope(scopedBuilder =>
+            {
+                foreach (var type in resolvedTypes)
+                    _serviceCollection.AddScoped(type, _ => new MockedClass(){Value = value});
+            
+                scopedBuilder.AddFromServiceCollection(_serviceCollection);
+            
+                var scopedContainer = scopedBuilder.Build();
+                foreach (var type in resolvedTypes)
+                {
+                    var item1 = scopedContainer.Resolve(type);
+                    var item2 = scopedContainer.Resolve(type);
+                    Assert.That(((MockedClass)container.Resolve(type)).Value, Is.EqualTo(value));
+                    Assert.That(item1.Equals(item2), Is.Not.True);
+                
+                }
+            });
+            //Assert.Throws<ContractDefinitionException>(()=>container.Resolve<MockedClass>());
+        }
     }
 }

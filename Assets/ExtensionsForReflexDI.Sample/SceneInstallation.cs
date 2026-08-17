@@ -2,7 +2,9 @@ using ExtensionsForReflexDI.Installers;
 using ExtensionsForReflexDI.Sample.Factory;
 using ExtensionsForReflexDI.Sample.MonoBehaviourBinding.ScriptableObjects;
 using Reflex.Core;
+using Reflex.Enums;
 using UnityEngine;
+using Resolution = Reflex.Enums.Resolution;
 
 namespace ExtensionsForReflexDI.Sample
 {
@@ -17,11 +19,11 @@ namespace ExtensionsForReflexDI.Sample
             
             //Factories / Base Installer usage
             FactorySampleInstaller.InstallBindings(containerBuilder);
-            containerBuilder.AddSingleton<FactoryClassUsage>().NonLazy<FactoryClassUsage>();
-            containerBuilder.AddSingleton<InjectableClass, IInjectableInterface>();
+            containerBuilder.RegisterType<FactoryClassUsage>().NonLazy<FactoryClassUsage>();
+            containerBuilder.RegisterType<InjectableClass, IInjectableInterface>();
             
             //ScriptableObjects
-            containerBuilder.AddSingleton<SampleConfigRequester>().NonLazy<SampleConfigRequester>();
+            containerBuilder.RegisterType<SampleConfigRequester>(Lifetime.Singleton, Resolution.Eager);
         }
     }
 }

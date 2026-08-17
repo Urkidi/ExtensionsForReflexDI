@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.gustavopsantos.reflex": {
-      "version": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#13.0.3",
+      "version": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "3d382e6e1d479380685887ef0c7a7a5492911b99"
+      "hash": "55423389e8d443f18090720891af52d9952d6e5e"
     },
     "com.unity.ext.nunit": {
       "version": "2.0.5",

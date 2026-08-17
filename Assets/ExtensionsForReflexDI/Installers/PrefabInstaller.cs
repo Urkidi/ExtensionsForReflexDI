@@ -1,7 +1,9 @@
 using System;
 using ExtensionsForReflexDI.MonoBehaviourBinding;
 using Reflex.Core;
+using Reflex.Enums;
 using UnityEngine;
+using Resolution = Reflex.Enums.Resolution;
 
 namespace ExtensionsForReflexDI.Installers
 {
@@ -19,14 +21,14 @@ namespace ExtensionsForReflexDI.Installers
 
         protected void BindViewFactory<T>(T prefab) where T : MonoBehaviour
         {
-            ContainerBuilder.AddSingleton<IViewFactory<T>>(_ => new ViewFactory<T>(prefab));
+            ContainerBuilder.RegisterFactory(_ => new ViewFactory<T>(prefab), new[] { typeof(IViewFactory<T>) }, Lifetime.Singleton, Resolution.Lazy);
         }
         
         protected void BindViewPool<T>(T prefab) where T : MonoBehaviour
         {
-            ContainerBuilder.AddSingleton(container => 
+            ContainerBuilder.RegisterFactory(_ => 
                     new ViewPool<T>(prefab),
-                typeof(ViewPool<T>), typeof(IViewPool<T>));
+                new[] { typeof(ViewPool<T>), typeof(IViewPool<T>) }, Lifetime.Transient, Resolution.Lazy);
         }
         
         protected void BindViewPool<T>(T prefab, int initialSize) where T : MonoBehaviour
